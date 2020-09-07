@@ -1,10 +1,13 @@
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        ex1();
-        ex2(args);
-        ex3();
+        //ex1();
+        //ex2(args);
+        //ex3();
+        //ex4();
+        ex5();
     }
 
     public static void ex1() {
@@ -38,9 +41,34 @@ public class Main {
 
     public static void ex3() {
         for (float i = 1; i < 11; i++) {
-            float number = 1 / i;
-            System.out.printf("%.3f \n", number);
+            System.out.printf("%.2f \n", 1 / i);
         }
+    }
+
+    public static void ex4() {
+        int[] array = new int [10];
+        for (int i = 0; i < 5; i++) {
+            array[i] = (int) (Math.random() * 100);
+            System.out.print(array[i] + " ");
+        }
+        for (int i = 5; i < 10; i++) {
+            Random r = new Random();
+            array[i] = r.nextInt(100);
+            System.out.print(array[i] + " ");
+        }
+        System.out.print("\nSorted: ");
+        Arrays.sort(array);
+        for(int i = 0; i < 10; i ++) {
+            System.out.print(array[i] + " ");
+        }
+    }
+
+    public static void ex5() {
+        int result = 1;
+        for (int i = 1; i < 8; i++) {
+            result += result * i;
+        }
+        System.out.println(result);
     }
 }
 
