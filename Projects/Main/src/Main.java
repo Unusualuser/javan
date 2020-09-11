@@ -3,10 +3,10 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        //ex1();
-        //ex2(args);
-        //ex3();
-        //ex4();
+        ex1();
+        ex2(args);
+        ex3();
+        ex4();
         ex5();
     }
 
@@ -16,7 +16,7 @@ public class Main {
         for (int i = 0; i < array.length; i++) {
             result += array[i];
         }
-        System.out.println("Сумма, посчитанная циклом for = " + result);
+        System.out.println("Ex1 \nСумма, посчитанная циклом for = " + result);
         int i = 0;
         result = 0;
         while (i < array.length) {
@@ -34,18 +34,21 @@ public class Main {
     }
 
     public static void ex2(String[] args) {
+        System.out.println("Ex2");
         for (int i = 0; i < args.length; i++) {
             System.out.println("Arguments[" + i + "] : " + args[i]);
         }
     }
 
     public static void ex3() {
+        System.out.println("Ex3");
         for (float i = 1; i < 11; i++) {
             System.out.printf("%.2f \n", 1 / i);
         }
     }
 
     public static void ex4() {
+        System.out.println("Ex4");
         int[] array = new int [10];
         for (int i = 0; i < 5; i++) {
             array[i] = (int) (Math.random() * 100);
@@ -68,7 +71,7 @@ public class Main {
         for (int i = 1; i < 8; i++) {
             result += result * i;
         }
-        System.out.println(result);
+        System.out.println("\nEx5 \n" + result);
     }
 }
 
