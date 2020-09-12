@@ -39,7 +39,7 @@ class Rectangle extends Shape {
     }
 
     @Override
-    public double getPerimetr() {
+    public double getPerimeter() {
         return 2 * (length + width);
     }
 

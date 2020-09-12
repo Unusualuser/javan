@@ -3,7 +3,6 @@ public abstract class Shape {
     protected boolean filled;
 
     public Shape() {
-
     }
 
     public Shape(String color, boolean filled) {
@@ -29,7 +28,7 @@ public abstract class Shape {
 
     abstract double getArea();
 
-    abstract double getPerimetr();
+    abstract double getPerimeter();
 
     @Override
     public String toString() {
