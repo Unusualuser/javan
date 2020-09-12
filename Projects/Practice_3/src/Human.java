@@ -1,5 +1,5 @@
 public class Human {
-    double weight;
+    protected double weight;
 
     public Human(double weight) {
         this.weight = weight;

@@ -19,12 +19,4 @@ public class Circle {
                 "radius=" + getRadius() +
                 '}';
     }
-
-    public double getArea() {
-        return Math.PI * radius * radius;
-    }
-
-    public double getPerimeter() {
-        return Math.PI * 2 * radius;
-    }
 }
