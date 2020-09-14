@@ -1,8 +1,7 @@
-public class Leg extends Human {
+public class Leg {
     double length;
 
-    public Leg(double weight, double length) {
-        super(weight);
+    public Leg(double length) {
         this.length = length;
     }
 
@@ -14,11 +13,10 @@ public class Leg extends Human {
         this.length = length;
     }
 
-    @Override
-    public String toString() {
+    @java.lang.Override
+    public java.lang.String toString() {
         return "Leg{" +
                 "length=" + length +
-                ", weight=" + weight +
                 '}';
     }
 }

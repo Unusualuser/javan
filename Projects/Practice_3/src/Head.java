@@ -1,8 +1,7 @@
-public class Head extends Human {
+public class Head {
     boolean haired;
 
-    public Head(double weight, boolean haired) {
-        super(weight);
+    public Head(boolean haired) {
         this.haired = haired;
     }
 
@@ -14,11 +13,10 @@ public class Head extends Human {
         this.haired = haired;
     }
 
-    @Override
-    public String toString() {
+    @java.lang.Override
+    public java.lang.String toString() {
         return "Head{" +
-                "haired=" + getHaired() +
-                ", weight=" + getWeight() +
+                "haired=" + haired +
                 '}';
     }
 }

@@ -1,8 +1,7 @@
-public class Hand extends Human {
+public class Hand {
     int fingers;
 
-    public Hand(double weight, int fingers) {
-        super(weight);
+    public Hand(int fingers) {
         this.fingers = fingers;
     }
 
@@ -14,11 +13,10 @@ public class Hand extends Human {
         this.fingers = fingers;
     }
 
-    @Override
-    public String toString() {
+    @java.lang.Override
+    public java.lang.String toString() {
         return "Hand{" +
                 "fingers=" + fingers +
-                ", weight=" + weight +
                 '}';
     }
 }
