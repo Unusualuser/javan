@@ -25,11 +25,10 @@ public class Field {
     public void countSum() {
         sumArray = new int[size][size];
         sumArray[0][0] = array[0][0];
-
         for (int j = 1; j < size; j++) {
             sumArray[0][j] = sumArray[0][j - 1] + array[0][j];
         }
-        
+
         for (int i = 1; i < size; i++) {
             sumArray[i][0] = sumArray[i - 1][1] + array[i][0];
         }
