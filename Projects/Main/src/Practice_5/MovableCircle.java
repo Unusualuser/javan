@@ -1,8 +1,8 @@
 package Practice_5;
 
-public class MovableCircle implements Movable {
-    int radius;
-    MovablePoint center;
+public class MovableCircle extends Circle implements Movable {
+    private int radius;
+    private MovablePoint center;
 
     public MovableCircle(int radius, MovablePoint center) {
         this.radius = radius;
@@ -19,21 +19,21 @@ public class MovableCircle implements Movable {
 
     @Override
     public void moveDown() {
-        this.center.y -= this.center.ySpeed;
+        this.center.moveDown();
     }
 
     @Override
     public void moveUp() {
-        this.center.y += this.center.ySpeed;
+        this.center.moveUp();
     }
 
     @Override
     public void moveLeft() {
-        this.center.x -= this.center.xSpeed;
+        this.center.moveLeft();
     }
 
     @Override
     public void moveRight() {
-        this.center.x += this.center.xSpeed;
+        this.center.moveRight();
     }
 }

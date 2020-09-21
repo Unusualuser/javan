@@ -1,8 +1,8 @@
-package Practice_6;
+package Practice_5;
 
 public abstract class Shape {
-    protected String color;
-    protected boolean filled;
+    private String color;
+    private boolean filled;
 
     public Shape() {
     }

@@ -1,8 +1,8 @@
-package Practice_6;
+package Practice_5;
 
 class Rectangle extends Shape {
-    double width;
-    double length;
+    private double width;
+    private double length;
 
     public Rectangle() {
     }
@@ -13,8 +13,8 @@ class Rectangle extends Shape {
     }
 
     public Rectangle(double width, double length, String color, boolean filled) {
-        this.filled = filled;
-        this.color = color;
+        this.setFilled(filled);
+        this.setColor(color);
         this.width = width;
         this.length = length;
     }

@@ -1,4 +1,4 @@
-package Practice_6;
+package Practice_5;
 
 class MovableRectangleTest {
     public static void main(String[] args) {
@@ -7,8 +7,9 @@ class MovableRectangleTest {
         movrect.moveDown();
         movrect.moveRight();
         System.out.println(movrect);
-        movrect.bottomRight.xSpeed = 2;
         movrect.moveUp();
+        movrect.setWidth(3);
+        movrect.setLength(2);
         System.out.println(movrect);
     }
 }
