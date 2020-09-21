@@ -25,6 +25,7 @@ public class Field {
     public void countSum() {
         sumArray = new int[size][size];
         sumArray[0][0] = array[0][0];
+
         for (int j = 1; j < size; j++) {
             sumArray[0][j] = sumArray[0][j - 1] + array[0][j];
         }
@@ -45,6 +46,6 @@ public class Field {
     }
 
     public void outResult() {
-        System.out.println(sumArray[size - 1][size - 1]);
+        System.out.println(sumArray[size-1][size-1]);
     }
 }
