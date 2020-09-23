@@ -31,7 +31,7 @@ public class Field {
         }
 
         for (int i = 1; i < size; i++) {
-            sumArray[i][0] = sumArray[i - 1][1] + array[i][0];
+            sumArray[i][0] = sumArray[i - 1][0] + array[i][0];
         }
 
         for (int i = 1; i < size; i++) {
