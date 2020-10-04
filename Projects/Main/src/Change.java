@@ -15,6 +15,6 @@ public class Change {
 
     public static void main(String[] args) {
         Change change = new Change();
-        System.out.println(change.search(7, 5));
+        System.out.println(change.search(8524, 5));
     }
 }

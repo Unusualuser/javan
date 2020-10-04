@@ -1,4 +1,4 @@
-package Practice_7;
+package Practice_78;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -21,7 +21,7 @@ public class Company {
             Managers.add(employee);
             AllEmployees.add(employee);
             employee.setFullSalary(employee.getPosition().calcSalary(employee.getSalary()));
-            companyIncome += employee.getFullSalary();
+            companyIncome += ((employee.getFullSalary() - employee.getSalary()) * 20);
         }
         else if (employee.getPosition().getJobTitle().equals("TopManager")) {
             TopManagers.add(employee);
@@ -44,7 +44,7 @@ public class Company {
         else if (employee.getPosition().getJobTitle().equals("Manager")) {
             Managers.remove(employee);
             AllEmployees.remove(employee);
-            companyIncome -= employee.getFullSalary();
+            companyIncome -= ((employee.getFullSalary() - employee.getSalary()) * 20);
         }
         else if (employee.getPosition().getJobTitle().equals("TopManager")) {
             TopManagers.remove(employee);

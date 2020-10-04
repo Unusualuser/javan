@@ -1,4 +1,4 @@
-package Practice_7;
+package Practice_78;
 
 class CompanyTest {
 
@@ -11,19 +11,20 @@ class CompanyTest {
             if (i<80) {
                 company.hire(new Employee("Ger", "Mana", ((int) (50000 + Math.random() * 20000)), new Manager()));
             }
-            if (i<10) {
-                company.hire(new Employee("Manager", "Top", ((int) (50000 + Math.random() * 20000)), new TopManager(company)));
-            }
+        }
+
+        for (int i=0; i < 10; i++) {
+            company.hire(new Employee("Manager", "Top", ((int) (50000 + Math.random() * 20000)), new TopManager(company)));
         }
 
         System.out.println("The highest salaries: ");
         for (Employee employee : company.getTopSalaryStaff(13)) {
-            System.out.println(employee.getFullSalary());
+            System.out.println((int) employee.getFullSalary());
         }
 
         System.out.println("\n The lowest salaries: ");
         for (Employee employee : company.getLowestSalaryStaff(30)) {
-            System.out.println(employee.getFullSalary());
+            System.out.println((int) employee.getFullSalary());
         }
 
         System.out.println();
@@ -31,13 +32,15 @@ class CompanyTest {
 
         System.out.println("\nThe highest salaries: ");
         for (Employee employee : company.getTopSalaryStaff(13)) {
-            System.out.println(employee.getFullSalary());
+            System.out.println((int) employee.getFullSalary());
         }
 
         System.out.println("\nThe lowest salaries: ");
         for (Employee employee : company.getLowestSalaryStaff(30)) {
-            System.out.println(employee.getFullSalary());
+            System.out.println((int) employee.getFullSalary());
         }
 
+
+        System.out.println(company.getIncome());
     }
 }

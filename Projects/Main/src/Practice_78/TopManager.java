@@ -1,4 +1,4 @@
-package Practice_7;
+package Practice_78;
 
 public class TopManager implements EmployeePosition{
     private Company company;
