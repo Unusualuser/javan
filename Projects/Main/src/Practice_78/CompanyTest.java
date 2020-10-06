@@ -17,6 +17,8 @@ class CompanyTest {
             company.hire(new Employee("Manager", "Top", ((int) (50000 + Math.random() * 20000)), new TopManager(company)));
         }
 
+        System.out.println(company.getIncome());
+
         System.out.println("The highest salaries: ");
         for (Employee employee : company.getTopSalaryStaff(13)) {
             System.out.println((int) employee.getFullSalary());
