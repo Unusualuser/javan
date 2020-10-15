@@ -1,4 +1,4 @@
-package Practice_78;
+package Practice_7_8;
 
 public interface EmployeePosition {
     String getJobTitle();
