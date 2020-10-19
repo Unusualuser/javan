@@ -6,7 +6,6 @@ public class Main {
         try {
             human.setHeight(195);
             human.setWeight(75);
-            human.setName("Andrewnewnew");
         }
 
         catch (HumanStatsException hse) {
@@ -20,5 +19,6 @@ public class Main {
         finally {
             System.out.println(human);
         }
+        human.setName("Andrewnewnew");
     }
 }
