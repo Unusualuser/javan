@@ -5,7 +5,7 @@ public class Main {
         Human human = new Human();
         try {
             human.setHeight(195);
-            human.setWeight(75);
+            human.setWeight(301);
         }
 
         catch (HumanStatsException hse) {
