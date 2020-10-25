@@ -17,19 +17,19 @@ public class WithRegex {
         }
         String line = scanner.next();
         StringBuffer buffer = new StringBuffer();
-        HashMap<String, String> replaceMap = new HashMap<String, String>();
+        HashMap<String, String> dict = new HashMap<String, String>();
         for (Matcher matcher:matchers) {
             if(matcher.find()) {
                 buffer.append(matcher.group("rule"));
                 if (matcher != matchers.get(count - 1)) {
                     buffer.append("|");
                 }
-                replaceMap.put(matcher.group("rule"), matcher.group("on"));
+                dict.put(matcher.group("rule"), matcher.group("on"));
             }
         }
         Pattern pattern = Pattern.compile(buffer.toString());
         Matcher matcher = pattern.matcher(line);
-        line =  matcher.replaceAll(x -> replaceMap.get(x.group()));
+        line =  matcher.replaceAll(var -> dict.get(var.group()));
         System.out.println(line);
     }
 }
