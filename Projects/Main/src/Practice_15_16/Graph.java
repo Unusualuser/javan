@@ -3,71 +3,47 @@ package Practice_15_16;
 import java.util.Scanner;
 
 public class Graph {
-    private Scanner scanner = new Scanner(System.in);
+    private String action0;
+    private String action1;
+    private Graph next0;
+    private Graph next1;
+    public static Scanner scanner = new Scanner(System.in);
 
-    public void s1(int number) {
-        if (number == 1) {
-            System.out.println("add_library");
-            s5(scanner.nextInt());
+    public Graph(String action0, String action1) {
+        this.action0 = action0;
+        this.action1 = action1;
+    }
+
+    public void setNext(Graph next0, Graph next1) {
+        this.next0 = next0;
+        this.next1 = next1;
+    }
+
+    public void s(int number) {
+        if (number == 0) {
+            System.out.println(action0);
+            next0.s(scanner.nextInt());
         }
-        else if (number == 0) {
-            System.out.println("create_project");
-            s2(scanner.nextInt());
+        else if (number == 1) {
+            System.out.println(action1);
+            next1.s(scanner.nextInt());
         }
         else return;
     }
-
-    public void s2(int number) {
-        if (number == 1) {
-            System.out.println("drop_db");
-            s4(scanner.nextInt());
-        }
-        else if (number == 0) {
-            System.out.println("test");
-            s3(scanner.nextInt());
-        }
-        else return;
-    }
-
-    public void s3(int number) {
-        if (number == 1) {
-            System.out.println("add_library");
-            s5(scanner.nextInt());
-        }
-        else if (number == 0) {
-            System.out.println("drop_db");
-            s4(scanner.nextInt());
-        }
-        else return;
-    }
-
-    public void s4(int number) {
-        if (number == 1) {
-            System.out.println("deploy");
-            s5(scanner.nextInt());
-        }
-        else if (number == 0) {
-            System.out.println("restart");
-            s3(scanner.nextInt());
-        }
-        else return;
-    }
-
-    public void s5(int number) {
-        if (number == 1) {
-            System.out.println("restart");
-            s3(scanner.nextInt());
-        }
-        else if (number == 0) {
-            System.out.println("deploy");
-            s1(scanner.nextInt());
-        }
-        else return;
-    }
-
 
     public static void main(String[] args) {
-        Graph graph = new Graph();
-        graph.s1(graph.scanner.nextInt());
+        Graph s1 = new Graph("create_project", "add_library");
+        Graph s2 = new Graph("test", "drop_db");
+        Graph s3 = new Graph("drop_db", "add_library");
+        Graph s4 = new Graph("restart", "deploy");
+        Graph s5 = new Graph("deploy", "restart");
+        s1.setNext(s2,s5);
+        s2.setNext(s3,s4);
+        s3.setNext(s4,s5);
+        s4.setNext(s3,s5);
+        s5.setNext(s1,s3);
+
+        s1.s(scanner.nextInt());
     }
+
 }
