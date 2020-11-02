@@ -18,20 +18,18 @@ public class Main {
             file = new File(basePath + list[i]);
             lists.add(file.list());
         }
+//        for (int i = 0; i < list.length; i++) {
+//            System.out.println(list[i] + Arrays.toString(lists.get(i)));
+//        }
         for (int i = 0; i < list.length; i++) {
-            System.out.println(list[i] + Arrays.toString(lists.get(i)));
-        }
-        for (int i=0; i < list.length;i++) {
             for (int j = 0; j < lists.get(i).length; j++) {
                 file = new File(basePath + list[i] + "/" + lists.get(i)[j]);
                 String mainFilePath = file.getAbsolutePath();
-//                System.out.println(lists.get(i)[j]);
-//                System.out.println(mainFilePath);
                 BufferedReader reader = new BufferedReader(new FileReader(mainFilePath));
                 FileWriter writer = new FileWriter(newFile, true);
                 try {
                     String line = reader.readLine();
-                    if(j == 0) {
+                    if (j == 0) {
                         writer.write("#" + list[i]);
                         writer.write('\n');
                     }
@@ -51,8 +49,7 @@ public class Main {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
-                finally {
+                } finally {
                     writer.close();
                 }
             }
