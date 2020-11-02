@@ -1,11 +1,7 @@
 package Practice_17_18;
 
 import java.io.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -18,9 +14,11 @@ public class Main {
             file = new File(basePath + list[i]);
             lists.add(file.list());
         }
+
 //        for (int i = 0; i < list.length; i++) {
 //            System.out.println(list[i] + Arrays.toString(lists.get(i)));
 //        }
+
         for (int i = 0; i < list.length; i++) {
             for (int j = 0; j < lists.get(i).length; j++) {
                 file = new File(basePath + list[i] + "/" + lists.get(i)[j]);
