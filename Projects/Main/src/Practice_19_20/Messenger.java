@@ -1,49 +1,25 @@
 package Practice_19_20;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
+import java.net.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
 public class Messenger {
+    static DatagramSocket socket;
 
-    public static void main(String[] args) throws IOException {
-        int port = 6666;
-        DatagramSocket socket = new DatagramSocket(port);
-        byte[] buffer = new byte[2024];
-        DatagramPacket packet = new DatagramPacket(
-                buffer,
-                0,
-                buffer.length);
-        System.out.println("Listening on " + port);
-        File myFile = new File("src/Practice_19_20/history.txt");
-        if (myFile.exists()) {
-            myFile.delete();
+    static {
+        try {
+            socket = new DatagramSocket(6666);
+        } catch (SocketException e) {
+            e.printStackTrace();
         }
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter nickname: ");
-        String nickname = scanner.nextLine();
+    }
+
+    static Runnable receiveThread = () -> {
         while (true) {
-            String mes = scanner.nextLine();
-
-            SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
-            Date currentDate = new Date();
-
-            String fullMessage = formatter.format(currentDate) + " | " + nickname + ": " + mes;
-
-            byte[] data = fullMessage.getBytes();
-            DatagramPacket packet_2 = new DatagramPacket(
-                    data,
-                    0, data.length,
-                    InetAddress.getByName("192.168.0.109"),
-                    port
-            );
-            socket.send(packet_2);
             try {
                 byte[] bufferForReceive = new byte[2024];
                 DatagramPacket packetToReceive = new DatagramPacket(
@@ -65,16 +41,68 @@ public class Messenger {
             catch (IOException e) {
                 e.printStackTrace();
             }
+        }
 
-            FileWriter writer = new FileWriter("src/Practice_19_20/history.txt", true);
+    };
+
+    static Runnable sendThread = () -> {
+        byte[] buffer = new byte[2024];
+        DatagramPacket packet = new DatagramPacket(
+                buffer,
+                0,
+                buffer.length);
+        System.out.println("Listening on 6666");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter nickname: ");
+        String nickname = scanner.nextLine();
+        while (true) {
+            String mes = scanner.nextLine();
+            SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+            Date currentDate = new Date();
+            String fullMessage = formatter.format(currentDate) + " | " + nickname + ": " + mes;
+            byte[] data = fullMessage.getBytes();
+            DatagramPacket packet_2 = null;
+            try {
+                packet_2 = new DatagramPacket(
+                        data,
+                        0, data.length,
+                        InetAddress.getByName("192.168.0.109"),
+                        6666
+                );
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            }
+            try {
+                socket.send(packet_2);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            FileWriter writer = null;
+            try {
+                writer = new FileWriter("src/Practice_19_20/history.txt", true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             try {
                 writer.write(fullMessage + "\n");
             }
-             catch (IOException e) {
+            catch (IOException e) {
                 e.printStackTrace();
             } finally {
-                writer.close();
+                try {
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
+    };
+    public static void main(String[] args) throws IOException, InterruptedException {
+        Thread send = new Thread(sendThread);
+        Thread receive = new Thread(receiveThread);
+        send.start();
+        receive.start();
+        send.join();
+        receive.join();
     }
 }
