@@ -22,4 +22,46 @@
     "taskId":4,
     "worker":"Anisimov",
     "result":20.0
+},
+{
+    "id":0,
+    "taskId":5,
+    "worker":"Anisimov",
+    "result":133.0
+},
+{
+    "id":0,
+    "taskId":6,
+    "worker":"Anisimov",
+    "result":3400.0
+},
+{
+    "id":0,
+    "taskId":7,
+    "worker":"Anisimov",
+    "result":5.83
+},
+{
+    "id":0,
+    "taskId":8,
+    "worker":"Anisimov",
+    "result":15129.0
+},
+{
+    "id":0,
+    "taskId":9,
+    "worker":"Anisimov",
+    "result":1.44
+},
+{
+    "id":0,
+    "taskId":10,
+    "worker":"Anisimov",
+    "result":1.67
+},
+{
+    "id":0,
+    "taskId":11,
+    "worker":"Anisimov",
+    "result":108.0
 }
