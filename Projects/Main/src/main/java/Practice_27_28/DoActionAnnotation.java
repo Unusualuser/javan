@@ -8,5 +8,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 
-public @interface DoPrintAnnotation {
+public @interface DoActionAnnotation {
+    String purpose();
 }

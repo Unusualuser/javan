@@ -9,7 +9,6 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class MyRequest {
@@ -25,34 +24,22 @@ public class MyRequest {
                         .uri(URI.create("http://gitlessons2020.rtuitlab.ru:3000/reflectionTasks/" + id))
                         .build();
                 HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-                Class<DoAction> actionClass = DoAction.class;
                 DoAction doAction = new DoAction();
                 if(gson.fromJson(response.body(), MyTask.class).getId() == id) {
                     System.out.println(gson.fromJson(response.body(), MyTask.class));
-                    if(gson.fromJson(response.body(), MyTask.class).getType().equals("sum")) {
-                        try {
-                            Method method = actionClass.getDeclaredMethod("doSum", ArrayList.class);
-                            method.setAccessible(true);
-                            method.invoke(doAction, gson.fromJson(response.body(), MyTask.class).getData().getNumbers());
-                        } catch (IllegalAccessException | InvocationTargetException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    else if (gson.fromJson(response.body(), MyTask.class).getType().equals("print")) {
-                        for (Method m : DoAction.class.getDeclaredMethods()) {
-                            if (m.isAnnotationPresent(DoPrintAnnotation.class)) {
-                                try {
-                                    m.invoke(doAction, gson.fromJson(response.body(), MyTask.class).getData().getWords(), gson.fromJson(response.body(), MyTask.class).getData().getDelimeter());
-                                } catch (InvocationTargetException | IllegalAccessException e) {
-                                    e.printStackTrace();
-                                }
+                    for (Method m : DoAction.class.getDeclaredMethods()) {
+                        if (m.isAnnotationPresent(DoActionAnnotation.class) && m.getAnnotation(DoActionAnnotation.class).purpose().equals(gson.fromJson(response.body(), MyTask.class).getType())) {
+                            try {
+                                m.invoke(doAction, (gson.fromJson(response.body(), MyTask.class)).getData());
+                            } catch (InvocationTargetException | IllegalAccessException e) {
+                                e.printStackTrace();
                             }
                         }
                     }
                     id = id + 1;
                 }
             }
-            catch (InterruptedException | IOException | NoSuchMethodException e) {
+            catch (InterruptedException | IOException e) {
                 e.printStackTrace();
             }
             TimeUnit.SECONDS.sleep((long)(Math.random() * 2) - 1);

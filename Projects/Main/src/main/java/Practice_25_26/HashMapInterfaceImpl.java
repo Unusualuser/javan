@@ -31,7 +31,7 @@ public class HashMapInterfaceImpl<K, V> implements HashMapInterface<K, V> {
         if (myHashMap.get(index).size() != 0) {
             for (int i = 0; i < myHashMap.get(index).size(); i++) {
                 MyHashObject<K, V> object = myHashMap.get(index).get(i);
-                if (key.hashCode() == object.getKey().hashCode()) {
+                if (key.equals(object.getKey())) {
                     object = new MyHashObject<>(key, value);
                     myHashMap.get(index).set(i, object);
                 } else {
@@ -66,21 +66,11 @@ public class HashMapInterfaceImpl<K, V> implements HashMapInterface<K, V> {
 
             @Override
             public boolean hasNext() {
-                if (currIndOfArr == myHashMap.size() - 1) {
-                    return false;
-                }
-                while (myHashMap.get(currIndOfArr + 1).size() == 0) {
+                while((currIndOfArr < 16) && (currIndOfVal == myHashMap.get(currIndOfArr).size())) {
+                    currIndOfVal=0;
                     currIndOfArr++;
-                    currIndOfVal = 0;
-                    if (currIndOfArr == myHashMap.size() - 1) {
-                        return false;
-                    }
                 }
-                if (currIndOfVal == myHashMap.get(currIndOfArr).size()) {
-                    currIndOfArr++;
-                    currIndOfVal = 0;
-                }
-                return (currIndOfArr < myHashMap.size()) && (currIndOfVal < myHashMap.get(currIndOfArr).size());
+                return currIndOfArr < 16;
             }
 
             @Override

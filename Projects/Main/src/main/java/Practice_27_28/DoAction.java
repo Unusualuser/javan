@@ -1,23 +1,21 @@
 package Practice_27_28;
 
-import java.util.ArrayList;
-
 public class DoAction {
-    @DoSumAnnotation
-    private void doSum(ArrayList<Integer> numbers) {
-        int result = numbers.stream()
+    @DoActionAnnotation(purpose = "sum")
+    public static void doSum(Data data) {
+        int result = data.getNumbers().stream()
                 .mapToInt(a -> a)
                 .sum();
         System.out.println(result);
     }
 
-    @DoPrintAnnotation
-    public static void doPrint(ArrayList<String> words, String dlm) {
+    @DoActionAnnotation(purpose = "print")
+    public static void doPrint(Data data) {
         StringBuilder stringBuilder = new StringBuilder();
-        for(int i = 0; i < words.size(); i++) {
-            stringBuilder.append(words.get(i));
-            if(i != (words.size() - 1)) {
-                stringBuilder.append(dlm);
+        for(int i = 0; i < data.getWords().size(); i++) {
+            stringBuilder.append(data.getWords().get(i));
+            if(i != (data.getWords().size() - 1)) {
+                stringBuilder.append(data.getDelimeter());
             }
         }
         System.out.println(stringBuilder);
